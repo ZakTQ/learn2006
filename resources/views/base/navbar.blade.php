@@ -8,19 +8,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Главная страница</a>
+                    <a class="nav-link" aria-current="page" 
+                    href="/">Главная страница</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Регистрация</a>
+                    <a class="nav-link" aria-current="page" 
+                    href="/home">Личный кабинет</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Личный кабинет</a>
+                    <a class="nav-link" aria-current="page" 
+                    href="/registration">Регистрация</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Вход</a>
+                    <a class="nav-link" aria-current="page" 
+                    href="/login">Вход</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Выход</a>
+                    <a class="nav-link" aria-current="page" 
+                    href="/logout">Выход</a>
                 </li>
             </ul>
         </div>
