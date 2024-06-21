@@ -13,7 +13,6 @@ class RegistrationController extends Controller
 
     public function register(Request $request)
     {
-
         return redirect()->route('posts.index');
     }
 }

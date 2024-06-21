@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->get();
+        // $posts = DB::table('posts')->get();
+        //$posts = Post::all();
+        $posts = Post::get();
 
         return view('main', ['posts' => $posts]);
     }
@@ -42,7 +45,11 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = DB::table('posts')->find($id);
+        //$post = DB::table('posts')->find($id);
+        //$post = Post::where('id', $id)->first();
+        $post = Post::firstWhere('id', $id);
+        //findOrFail()
+
         return view('postShow', ['post' => $post]);
     }
 
