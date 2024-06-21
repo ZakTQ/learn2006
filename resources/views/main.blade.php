@@ -5,22 +5,36 @@
 @section('content')
     <h1>Главная страница</h1>
 
+    <div class="row">
+        @foreach ($posts as $item)
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">{{ $item->id }}</p>
+                    <p class="card-text">{{ $item->text }}</p>
+
+                    <div class="row p-2">
+                        <div>
+                            <a class="btn btn-success" href="{{ route('posts.show', ['post' => $item->id]) }}">Прочитать</a>
+                        </div>
+                        <div>
+                            <a class="btn btn-warning" href="{{ route('posts.edit', ['post' => $item->id]) }}">Изменить</a>
+                        </div>
+                        <form action="{{ route('posts.destroy', ['post' => $item->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input style="display: inline-block" type="submit" class="btn btn-danger" value="Удалить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
     <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
         <input class="form-control" type="text" name="text">
         <input class="btn btn-primary" type="submit" value="Отправить">
     </form>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-
-            <div class="row p-2">
-                <input type="submit" class="btn btn-success" value="Прочитать">
-                <input type="submit" class="btn btn-warning" value="Изменить">
-                <input type="submit" class="btn btn-danger" value="Удалить">
-            </div>
-        </div>
-    </div>
 
 @endsection

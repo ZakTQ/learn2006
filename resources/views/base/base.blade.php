@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    {{-- @isset()
+        
+    @endisset --}}
+
     @include('base.navbar')
 
     <div class="container">

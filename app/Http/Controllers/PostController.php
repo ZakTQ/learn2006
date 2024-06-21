@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -11,7 +12,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //return view('main');
+        $posts = DB::table('posts')->get();
+
+        return view('main', ['posts' => $posts]);
     }
 
     /**
@@ -27,7 +30,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('posts')->insert([
+            'text' => $request->input('text'),
+        ]);
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -35,7 +42,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = DB::table('posts')->find($id);
+        return view('postShow', ['post' => $post]);
     }
 
     /**
@@ -43,7 +51,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = DB::table('posts')->find($id);
+        return view('postEdit', ['post' => $post]);
     }
 
     /**
@@ -51,7 +60,10 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        DB::table('posts')->where('id', $id)
+            ->update(['text' => $request->input('text')]);
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -59,6 +71,8 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('posts')->where('id', $id)->delete();
+
+        return redirect()->route('posts.index');
     }
 }
